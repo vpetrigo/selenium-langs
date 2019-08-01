@@ -18,11 +18,10 @@ def pytest_runtest_setup(item):
 
 @pytest.fixture
 def browser() -> Remote:
-    browser = webdriver.Chrome(options=options)
-
     if os.getenv("TRAVIS") is not None:
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
 
+    browser = webdriver.Chrome(options=options)
     yield browser
     browser.quit()
