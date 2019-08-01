@@ -12,4 +12,4 @@ before_script: ci/setup.sh
 install: pip install -r requirements.txt
 script:
   - export PATH=`pwd`:$PATH
-  - py.test
+  - py.test -v
