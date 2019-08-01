@@ -1,3 +1,5 @@
+import pytest
+
 from selenium.webdriver.common.by import By
 
 link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
@@ -16,3 +18,11 @@ def test_french_language(browser) -> None:
     browser.get(link)
     actual = browser.find_element(*ADD_TO_CART_BUTTON).text
     assert actual == expected, f"{actual} != {expected} in French language"
+
+
+@pytest.mark.xfail
+def test_russian_language(browser) -> None:
+    expected = "Добавить в корзину"
+    browser.get(link)
+    actual = browser.find_element(*ADD_TO_CART_BUTTON).text
+    assert actual == expected, f"{actual} != {expected} in Russian language"
