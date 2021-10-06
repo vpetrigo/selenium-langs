@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/vpetrigo/selenium-langs.svg?branch=master)](https://travis-ci.com/vpetrigo/selenium-langs)
+[![Build Status](https://app.travis-ci.com/vpetrigo/selenium-langs.svg?branch=master)
 
 # Chrome language switch with CLI
 
