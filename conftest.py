@@ -11,7 +11,7 @@ options = None
 def pytest_runtest_setup(item):
     global options
 
-    language_to_use = "es" if item.function.__name__ == "test_spanish_language" else "fr"
+    language_to_use = "es,es_US" if item.function.__name__ == "test_spanish_language" else "fr,fr_US"
     prefs = {
         "translate_whitelists": {"your native language": language_to_use},
         "translate": {"enabled": "True"},
