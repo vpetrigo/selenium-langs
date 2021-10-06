@@ -12,7 +12,12 @@ def pytest_runtest_setup(item):
     global options
 
     language_to_use = "es" if item.function.__name__ == "test_spanish_language" else "fr"
+    prefs = {
+        "translate_whitelists": {"your native language":language_to_use},
+        "translate":{"enabled":"True"}
+    }
     options = ChromeOptions()
+    options.add_experimental_option("prefs", prefs)
     options.add_argument(f"--lang={language_to_use}")
 
 
