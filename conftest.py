@@ -1,4 +1,5 @@
 import os
+import tempfile
 import pytest
 
 from selenium import webdriver
@@ -11,14 +12,8 @@ options = None
 def pytest_runtest_setup(item):
     global options
 
-    language_to_use = "es,es_US" if item.function.__name__ == "test_spanish_language" else "fr,fr_US"
-    prefs = {
-        "translate_whitelists": {"your native language": language_to_use},
-        "translate": {"enabled": "True"},
-        "intl.accept_languages": language_to_use
-    }
+    language_to_use = "es" if item.function.__name__ == "test_spanish_language" else "fr"
     options = ChromeOptions()
-    options.add_experimental_option("prefs", prefs)
     options.add_argument(f"--lang={language_to_use}")
 
 
@@ -28,6 +23,9 @@ def browser() -> Remote:
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
 
-    browser = webdriver.Chrome(options=options)
-    yield browser
+    with tempfile.TemporaryDirectory() as tmp:
+        options.add_argument(f"--user-data-dir={tmp}")
+        browser = webdriver.Chrome(options=options)
+        yield browser
+
     browser.quit()
