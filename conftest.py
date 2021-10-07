@@ -27,5 +27,4 @@ def browser() -> Remote:
         options.add_argument(f"--user-data-dir={tmp}")
         browser = webdriver.Chrome(options=options)
         yield browser
-
-    browser.quit()
+        browser.quit()
