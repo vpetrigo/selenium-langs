@@ -1,9 +1,9 @@
-name: Chrome
+name: Chrome Linux
 on: push
 
 jobs:
-  chrome-win:
-    runs-on: windows-latest
+  chrome-linux:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository code

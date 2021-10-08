@@ -1,0 +1,25 @@
+name: Chrome Windows
+on: push
+
+jobs:
+  chrome-win:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Install pipenv
+        run: python -m pip install -U pipenv wheel
+      - name: Install Python dependencies
+        run: |
+          pipenv install --deploy
+          pipenv sync
+      - name: Install ChromeDriver
+        uses: nanasess/setup-chromedriver@master
+        with:
+          chromedriver-version: "94.0.4606.61"
+      - run: pipenv run pytest
