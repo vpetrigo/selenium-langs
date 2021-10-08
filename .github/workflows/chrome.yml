@@ -15,7 +15,9 @@ jobs:
       - name: Install pipenv
         run: python -m pip install -U pipenv wheel
       - name: Install Python dependencies
-        run: pipenv install --deploy
+        run: |
+          pipenv install --deploy
+          pipenv sync
       - name: Install ChromeDriver
         uses: nanasess/setup-chromedriver@master
         with:
