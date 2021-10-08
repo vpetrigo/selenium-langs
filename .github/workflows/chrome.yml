@@ -22,4 +22,4 @@ jobs:
         uses: nanasess/setup-chromedriver@master
         with:
           chromedriver-version: "94.0.4606.61"
-      - run: pytest
+      - run: pipenv run pytest
