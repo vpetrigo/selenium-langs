@@ -12,14 +12,16 @@ options = None
 def pytest_runtest_setup(item):
     global options
 
-    language_to_use = "es" if item.function.__name__ == "test_spanish_language" else "fr"
+    language_to_use = (
+        "es" if item.function.__name__ == "test_spanish_language" else "fr"
+    )
     options = ChromeOptions()
     options.add_argument(f"--lang={language_to_use}")
 
 
 @pytest.fixture
 def browser() -> Remote:
-    if os.getenv("TRAVIS") is not None:
+    if os.getenv("TRAVIS") is not None or os.getenv("GITHUB_WORKFLOW") is not None:
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
 
