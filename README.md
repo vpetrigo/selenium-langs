@@ -1,4 +1,5 @@
-![Build Status](https://app.travis-ci.com/vpetrigo/selenium-langs.svg?branch=master)
+[![Chrome Windows](https://github.com/vpetrigo/selenium-langs/actions/workflows/chrome-win.yml/badge.svg)](https://github.com/vpetrigo/selenium-langs/actions/workflows/chrome-win.yml)
+[![Chrome Linux](https://github.com/vpetrigo/selenium-langs/actions/workflows/chrome-linux.yml/badge.svg)](https://github.com/vpetrigo/selenium-langs/actions/workflows/chrome-linux.yml)
 
 # Chrome language switch with CLI
 
