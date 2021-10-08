@@ -13,7 +13,7 @@ def pytest_runtest_setup(item):
     global options
 
     language_to_use = (
-        "es" if item.function.__name__ == "test_spanish_language" else "fr"
+        "es-ES" if item.function.__name__ == "test_spanish_language" else "fr-FR"
     )
     options = ChromeOptions()
     options.add_argument(f"--lang={language_to_use}")
@@ -24,6 +24,7 @@ def browser() -> Remote:
     if os.getenv("TRAVIS") is not None or os.getenv("GITHUB_WORKFLOW") is not None:
         options.add_argument("--no-sandbox")
         options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
 
     with tempfile.TemporaryDirectory() as tmp:
         options.add_argument(f"--user-data-dir={tmp}")
