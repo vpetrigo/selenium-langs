@@ -2,8 +2,8 @@ name: Chrome
 on: push
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  chrome-win:
+    runs-on: windows-latest
 
     steps:
       - name: Check out repository code
